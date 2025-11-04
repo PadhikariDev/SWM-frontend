@@ -29,7 +29,7 @@ const Navbar = () => {
     const handleLogout = async () => {
         console.log("Logout clicked");
         try {
-            await axios.post("http://localhost:8000/api/logout", {}, { withCredentials: true });
+            await axios.post("https://swm-backend.onrender.com/api/logout", {}, { withCredentials: true });
             setUser(null);
             navigate("/");
         } catch (err) {

@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/api/me");
+                const res = await axios.get("https://swm-backend.onrender.com/api/me");
                 setUser(res.data);
             } catch {
                 setUser(null);

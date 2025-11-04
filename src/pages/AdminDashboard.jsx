@@ -11,7 +11,7 @@ const AdminDashboard = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/api/users");
+                const res = await axios.get("https://swm-backend.onrender.com/api/users");
                 setUsers(res.data);
             } catch (error) {
                 console.error("Error fetching users:", error);
@@ -24,8 +24,8 @@ const AdminDashboard = () => {
     const fetchUserDetails = async (userId) => {
         try {
             const [reportRes, pickupRes] = await Promise.all([
-                axios.get(`http://localhost:8000/api/reportWaste/${userId}`),
-                axios.get(`http://localhost:8000/api/pickup/${userId}`),
+                axios.get(`https://swm-backend.onrender.com/api/reportWaste/${userId}`),
+                axios.get(`https://swm-backend.onrender.com/api/pickup/${userId}`),
             ]);
             setReports(reportRes.data);
             setPickups(pickupRes.data);
@@ -37,7 +37,7 @@ const AdminDashboard = () => {
     // Update waste report status
     const updateWasteStatus = async (id, status, userId) => {
         try {
-            await axios.put(`http://localhost:8000/api/reportWaste/${id}/status`, {
+            await axios.put(`https://swm-backend.onrender.com/api/reportWaste/${id}/status`, {
                 status,
             });
             fetchUserDetails(userId);
@@ -49,7 +49,7 @@ const AdminDashboard = () => {
     // Update pickup status
     const updatePickupStatus = async (id, status, userId) => {
         try {
-            await axios.put(`http://localhost:8000/api/pickup/${id}/status`, {
+            await axios.put(`https://swm-backend.onrender.com/api/pickup/${id}/status`, {
                 status,
             });
             fetchUserDetails(userId);
@@ -151,7 +151,7 @@ const AdminDashboard = () => {
                                                 >
                                                     <td className="p-3">
                                                         <img
-                                                            src={`http://localhost:8000${r.imageUrl}`}
+                                                            src={`https://swm-backend.onrender.com${r.imageUrl}`}
                                                             alt="Waste"
                                                             className="w-16 h-16 object-cover rounded-lg border"
                                                         />

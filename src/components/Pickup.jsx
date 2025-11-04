@@ -76,7 +76,7 @@ const Pickup = () => {
         setLoading(true);
         try {
             await axios.post(
-                "http://localhost:8000/api/pickup",
+                "https://swm-backend.onrender.com/api/pickup",
                 {
                     userId: user._id,
                     pickupLocation: {

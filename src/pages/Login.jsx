@@ -29,7 +29,7 @@ const Login = () => {
             return;
         }
         try {
-            const res = await axios.post("http://localhost:8000/api/login", formData, { withCredentials: true });
+            const res = await axios.post("https://swm-backend.onrender.com/api/login", formData, { withCredentials: true });
             alert("logged in");
             setUser(res.data.user);
             navigate("/");

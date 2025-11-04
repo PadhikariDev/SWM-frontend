@@ -18,7 +18,7 @@ const Register = () => {
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:8000/api/register", formData);
+            const res = await axios.post("https://swm-backend.onrender.com/api/register", formData);
             alert("Registration successfull!");
             navigate("/login");
         } catch (err) {

@@ -15,8 +15,8 @@ const Dashboard = () => {
       if (!user?._id) return;
       try {
         const [wasteRes, pickupRes] = await Promise.all([
-          axios.get(`http://localhost:8000/api/reportWaste/${user._id}`),
-          axios.get(`http://localhost:8000/api/pickup/${user._id}`),
+          axios.get(`https://swm-backend.onrender.com/api/reportWaste/${user._id}`),
+          axios.get(`https://swm-backend.onrender.com/api/pickup/${user._id}`),
         ]);
         setReports(wasteRes.data);
         setPickups(pickupRes.data);
@@ -51,7 +51,7 @@ const Dashboard = () => {
         trafficStatus: "Moderate",
       };
 
-      const res = await axios.post("http://localhost:8000/api/pickup", pickupData);
+      const res = await axios.post("https://swm-backend.onrender.com/api/pickup", pickupData);
       setPickupStatus((prev) => ({ ...prev, [reportId]: "Scheduled ✅" }));
       alert("Pickup scheduled successfully!");
       console.log(res.data);
@@ -125,8 +125,8 @@ const Dashboard = () => {
                     <td className="py-3 px-4">
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-medium ${r.status === "Verified"
-                            ? "bg-green-100 text-green-700"
-                            : "bg-yellow-100 text-yellow-700"
+                          ? "bg-green-100 text-green-700"
+                          : "bg-yellow-100 text-yellow-700"
                           }`}
                       >
                         {r.status}
@@ -169,10 +169,10 @@ const Dashboard = () => {
                     <td className="py-3 px-4">
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-medium ${p.status === "Completed"
-                            ? "bg-green-100 text-green-700"
-                            : p.status === "Scheduled"
-                              ? "bg-blue-100 text-blue-700"
-                              : "bg-yellow-100 text-yellow-700"
+                          ? "bg-green-100 text-green-700"
+                          : p.status === "Scheduled"
+                            ? "bg-blue-100 text-blue-700"
+                            : "bg-yellow-100 text-yellow-700"
                           }`}
                       >
                         {p.status}
